@@ -6,32 +6,29 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import GoogleIcon from "@mui/icons-material/Google";
+import KothonLogo from "../assets/Logo.png";
 
 const login = () => {
   return (
     <Container>
       <Box
-        sx={{
+        sx={ {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           height: "100vh",
-        }}
+        } }
       >
-        <Typography
-          variant="h2"
-          component="h1"
-          gutterBottom
-          sx={{ fontWeight: 500 }}
-        >
-          Kothon
-        </Typography>
+        <Box sx={ { maxWidth: "300px" } } className="gutterBottom">
+
+          <img alt="Kothon Logo" src={ KothonLogo } className="imgFluid mb3" />
+        </Box>
         <Button
-          onClick={() => signInWithRedirect(auth, provider)}
+          onClick={ () => signInWithRedirect(auth, provider) }
           variant="contained"
           color="error"
-          startIcon={<GoogleIcon />}
+          startIcon={ <GoogleIcon /> }
         >
           Sign In With Google
         </Button>
