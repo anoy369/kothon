@@ -2,7 +2,6 @@ import { signInWithRedirect } from "firebase/auth";
 import { auth, provider } from "../Firebase";
 
 import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import GoogleIcon from "@mui/icons-material/Google";
