@@ -19,16 +19,20 @@ function App() {
   const state = useContext(AuthContext);
   return (
     <Router>
-      <Switch>
-        {state.user ? (
+      {state.user ? (
+        <Switch>
           <Route path="/chats" component={Chats} />
-        ) : (
+          <Route path="/log" component={Chats} />
+          <Route>
+            <Redirect to="/chats" />
+          </Route>
+        </Switch>
+      ) : (
+        <Switch>
           <Route path="/" exact component={Login} />
-        )}
-        <Route>
-          {state.user ? <Redirect to="/chats" /> : <Redirect to="/" />}
-        </Route>
-      </Switch>
+          <Redirect to="/" />
+        </Switch>
+      )}
     </Router>
   );
 }
