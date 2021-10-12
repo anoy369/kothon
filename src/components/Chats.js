@@ -15,6 +15,7 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
+import Logout from "@mui/icons-material/Logout";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -84,45 +85,45 @@ export default function PrimarySearchAppBar() {
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{
+      anchorEl={ anchorEl }
+      anchorOrigin={ {
         vertical: "top",
         horizontal: "right",
-      }}
-      id={menuId}
+      } }
+      id={ menuId }
       keepMounted
-      transformOrigin={{
+      transformOrigin={ {
         vertical: "top",
         horizontal: "right",
-      }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
+      } }
+      open={ isMenuOpen }
+      onClose={ handleMenuClose }
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={ handleMenuClose }>Profile</MenuItem>
+      <MenuItem onClick={ handleMenuClose }>My account</MenuItem>
     </Menu>
   );
 
   const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{
+      anchorEl={ mobileMoreAnchorEl }
+      anchorOrigin={ {
         vertical: "top",
         horizontal: "right",
-      }}
-      id={mobileMenuId}
+      } }
+      id={ mobileMenuId }
       keepMounted
-      transformOrigin={{
+      transformOrigin={ {
         vertical: "top",
         horizontal: "right",
-      }}
-      open={isMobileMenuOpen}
-      onClose={handleMobileMenuClose}
+      } }
+      open={ isMobileMenuOpen }
+      onClose={ handleMobileMenuClose }
     >
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
+          <Badge badgeContent={ 4 } color="error">
             <MailIcon />
           </Badge>
         </IconButton>
@@ -134,13 +135,13 @@ export default function PrimarySearchAppBar() {
           aria-label="show 17 new notifications"
           color="inherit"
         >
-          <Badge badgeContent={17} color="error">
+          <Badge badgeContent={ 17 } color="error">
             <NotificationsIcon />
           </Badge>
         </IconButton>
         <p>Notifications</p>
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
+      <MenuItem onClick={ handleProfileMenuOpen }>
         <IconButton
           size="large"
           aria-label="account of current user"
@@ -152,11 +153,22 @@ export default function PrimarySearchAppBar() {
         </IconButton>
         <p>Profile</p>
       </MenuItem>
+      <MenuItem>
+        <IconButton
+          size="large"
+          aria-label="Sign out"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          <Logout />
+        </IconButton>
+        <p>Sign out</p>
+      </MenuItem>
     </Menu>
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={ { flexGrow: 1 } }>
       <AppBar position="static">
         <Toolbar>
           {/* <IconButton
@@ -168,25 +180,24 @@ export default function PrimarySearchAppBar() {
           >
             <MenuIcon />
           </IconButton> */}
-          {!isSearching && (
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              // sx={{ display: { xs: "none", sm: "block" } }}
-            >
-              Chat
-            </Typography>
-          )}
-          <Box sx={{ flexGrow: 1 }} />
-          {isSearching ? (
-            <Search onBlur={() => setIsSearching(!isSearching)}>
+          <Typography
+            variant="h6"
+            noWrap
+            component="div"
+            sx={ { display: { xs: isSearching ? "none" : "block", sm: "block" } } }
+          >
+            Chat
+          </Typography>
+          <Box sx={ { flexGrow: 1 } } />
+          { isSearching ? (
+            <Search onBlur={ () => setIsSearching(!isSearching) }>
               <SearchIconWrapper>
                 <SearchIcon />
               </SearchIconWrapper>
               <StyledInputBase
+                autoFocus
                 placeholder="Search…"
-                inputProps={{ "aria-label": "search" }}
+                inputProps={ { "aria-label": "search" } }
               />
             </Search>
           ) : (
@@ -194,18 +205,18 @@ export default function PrimarySearchAppBar() {
               size="large"
               aria-label="search"
               color="inherit"
-              onClick={() => setIsSearching(!isSearching)}
+              onClick={ () => setIsSearching(!isSearching) }
             >
               <SearchIcon />
             </IconButton>
-          )}
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          ) }
+          <Box sx={ { display: { xs: "none", md: "flex" } } }>
             <IconButton
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
             >
-              <Badge badgeContent={4} color="error">
+              <Badge badgeContent={ 4 } color="error">
                 <MailIcon />
               </Badge>
             </IconButton>
@@ -214,7 +225,7 @@ export default function PrimarySearchAppBar() {
               aria-label="show 17 new notifications"
               color="inherit"
             >
-              <Badge badgeContent={17} color="error">
+              <Badge badgeContent={ 17 } color="error">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
@@ -222,21 +233,28 @@ export default function PrimarySearchAppBar() {
               size="large"
               edge="end"
               aria-label="account of current user"
-              aria-controls={menuId}
+              aria-controls={ menuId }
               aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
+              onClick={ handleProfileMenuOpen }
               color="inherit"
             >
               <AccountCircle />
             </IconButton>
+            <IconButton
+              size="large"
+              aria-label="Sign out"
+              color="inherit"
+            >
+              <Logout />
+            </IconButton>
           </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
+          <Box sx={ { display: { xs: "flex", md: "none" } } }>
             <IconButton
               size="large"
               aria-label="show more"
-              aria-controls={mobileMenuId}
+              aria-controls={ mobileMenuId }
               aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
+              onClick={ handleMobileMenuOpen }
               color="inherit"
             >
               <MoreIcon />
@@ -244,8 +262,8 @@ export default function PrimarySearchAppBar() {
           </Box>
         </Toolbar>
       </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
+      { renderMobileMenu }
+      { renderMenu }
     </Box>
   );
 }
