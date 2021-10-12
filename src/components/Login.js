@@ -11,23 +11,22 @@ const login = () => {
   return (
     <Container>
       <Box
-        sx={ {
+        sx={{
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           height: "100vh",
-        } }
+        }}
       >
-        <Box sx={ { maxWidth: "300px" } } className="gutterBottom">
-
-          <img alt="Kothon Logo" src={ KothonLogo } className="imgFluid mb3" />
+        <Box sx={{ maxWidth: "300px" }} className="gutterBottom">
+          <img alt="Kothon Logo" src={KothonLogo} className="imgFluid mb3" />
         </Box>
         <Button
-          onClick={ () => signInWithRedirect(auth, provider) }
+          onClick={() => signInWithRedirect(auth, provider)}
           variant="contained"
           color="error"
-          startIcon={ <GoogleIcon /> }
+          startIcon={<GoogleIcon />}
         >
           Sign In With Google
         </Button>
