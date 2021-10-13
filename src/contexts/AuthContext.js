@@ -6,8 +6,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 
 export const AuthContext = createContext();
 
-export const useAuth = () => useContext(AuthContext);
-
 export const AuthProvider = ({ children }) => {
   const [user, loading, error] = useAuthState(auth);
   console.log("user", user);
